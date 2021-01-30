@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title> PlayList </ion-title>
+    <ion-button (click)="logout()" slot="end" color="danger">
+      LogOut
+    </ion-button> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row >
+    <ion-col>
+      <ion-card *ngFor="let item of playlist" (click)="getPlaylistId(item.id)" >
+        <ion-item class="container" (click)="getPlaylistId(item.id)">
+           <img src="{{ item.snippet.thumbnails.default.url }}" alt="" /><b></b>
+          <h4 color="light">{{ item.snippet.title }}</h4>
+        </ion-item>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
